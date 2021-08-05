@@ -32,7 +32,7 @@ var functions = {
                     user.comparePassword(req.body.password, function (err, isMatch) {
                         if (isMatch && !err) {
                             var token = jwt.encode(user, config.secret)
-                            res.json({success: true, token: token})
+                            res.status(200).json({success: true, token: token})
                         }
                         else {
                             return res.status(403).send({success: false, msg: 'Authentication failed, wrong password'})
